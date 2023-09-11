@@ -21,8 +21,7 @@ public class ClienteController {
 
     @PostMapping
     public Cliente incluir(@RequestBody Cliente cliente) {
-        Cliente response = clienteService.incluir(cliente);
-        return response;
+        return clienteService.incluir(cliente);
     }
 
     @GetMapping

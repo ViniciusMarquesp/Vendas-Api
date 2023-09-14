@@ -6,6 +6,7 @@ import viniciusmarquesp.com.github.vendas.model.entity.Cliente;
 import viniciusmarquesp.com.github.vendas.model.entity.Produto;
 import viniciusmarquesp.com.github.vendas.service.ProdutoService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,7 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public Produto incluir(@RequestBody Produto produto) {
+    public Produto incluir(@RequestBody @Valid Produto produto) {
         return produtoService.incluir(produto);
     }
 
@@ -30,7 +31,7 @@ public class ProdutoController {
         return produtoService.pesquisarTodos();
     }
     @PutMapping("/{id}")
-    public Produto atualizar(@RequestBody Produto produto, @PathVariable Long id) {
+    public Produto atualizar(@RequestBody @Valid Produto produto, @PathVariable Long id) {
         return produtoService.atualizar(produto, id);
     }
 

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 @Entity
@@ -23,6 +24,7 @@ public class Cliente {
 
     @Getter
     @Column(name = "nome")
+    @NotEmpty(message = "Campo NOME deve ser informado")
     private String nome;
 
     @Getter
@@ -39,6 +41,7 @@ public class Cliente {
 
     @Getter
     @Column(name = "cpf")
+    @NotEmpty(message = "Campo CPF deve ser informado")
     private String cpf;
 
     @JsonIgnore

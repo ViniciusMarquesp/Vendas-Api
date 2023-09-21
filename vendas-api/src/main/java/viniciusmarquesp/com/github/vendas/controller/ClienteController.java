@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import viniciusmarquesp.com.github.vendas.model.entity.Cliente;
 import viniciusmarquesp.com.github.vendas.service.ClienteService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,7 @@ public class ClienteController {
     }
 
     @PostMapping
-    public Cliente incluir(@RequestBody Cliente cliente) {
+    public Cliente incluir(@RequestBody @Valid Cliente cliente) {
         return clienteService.incluir(cliente);
     }
 
@@ -29,7 +30,7 @@ public class ClienteController {
         return clienteService.pesquisarTodos();
     }
     @PutMapping("/{id}")
-    public Cliente atualizar(@RequestBody Cliente cliente, @PathVariable Long id) {
+    public Cliente atualizar(@RequestBody @Valid Cliente cliente, @PathVariable Long id) {
         return clienteService.atualizar(cliente, id);
     }
 

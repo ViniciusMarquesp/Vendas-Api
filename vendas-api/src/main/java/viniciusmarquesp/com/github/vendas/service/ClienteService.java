@@ -3,6 +3,7 @@ package viniciusmarquesp.com.github.vendas.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import viniciusmarquesp.com.github.vendas.exception.ResourceNotFoundException;
 import viniciusmarquesp.com.github.vendas.model.entity.Cliente;
 import viniciusmarquesp.com.github.vendas.model.repository.ClienteRepository;
 
@@ -19,7 +20,7 @@ public class ClienteService {
     private ClienteRepository clienteRepository;
 
     public Cliente pesquisarPorId(Long id) {
-        return clienteRepository.findById(id).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, CLIENTE_NAO_ENCONTRADO));
+        return clienteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(CLIENTE_NAO_ENCONTRADO));
     }
 
     public List<Cliente> pesquisarTodos() {
@@ -42,7 +43,7 @@ public class ClienteService {
         return clienteRepository.findById(id).map(m -> {
             cliente.setId(m.getId());
             return clienteRepository.save(cliente);
-        }).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, CLIENTE_NAO_ENCONTRADO));
+        }).orElseThrow(() -> new ResourceNotFoundException(CLIENTE_NAO_ENCONTRADO));
     }
 
     public void deletar(Long id) {
@@ -53,6 +54,6 @@ public class ClienteService {
         clienteRepository.findById(id).map(m -> {
             clienteRepository.delete(m);
             return Void.TYPE;
-        }).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, CLIENTE_NAO_ENCONTRADO));
+        }).orElseThrow(() -> new ResourceNotFoundException(CLIENTE_NAO_ENCONTRADO));
     }
 }

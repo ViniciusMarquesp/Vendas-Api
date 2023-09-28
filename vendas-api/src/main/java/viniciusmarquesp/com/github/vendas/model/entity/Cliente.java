@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -23,24 +24,26 @@ public class Cliente {
     private Long id;
 
     @Getter
-    @Column(name = "nome")
+    @Column(name = "nome", length = 50)
+    @Length(min = 2, max = 50, message = "O campo NOME deve ser entre 2 e 50 caracteres")
     @NotEmpty(message = "Campo NOME deve ser informado")
     private String nome;
 
     @Getter
-    @Column(name = "endereco")
+    @Column(name = "endereco", length = 70)
+    @Length(min = 2, max = 70, message = "O campo NOME deve ser entre 2 e 70 caracteres")
     private String endereco;
 
     @Getter
-    @Column(name = "email")
+    @Column(name = "email", length = 40)
     private String email;
 
     @Getter
-    @Column(name = "telefone")
+    @Column(name = "telefone", length = 15)
     private String telefone;
 
     @Getter
-    @Column(name = "cpf")
+    @Column(name = "cpf", length = 14)
     @NotEmpty(message = "Campo CPF deve ser informado")
     private String cpf;
 

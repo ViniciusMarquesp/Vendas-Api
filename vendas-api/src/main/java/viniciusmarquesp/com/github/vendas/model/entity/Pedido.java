@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.collection.internal.PersistentIdentifierBag;
+import viniciusmarquesp.com.github.vendas.enums.StatusPedido;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -34,8 +35,12 @@ public class Pedido {
     private LocalDate dataPedido;
 
     @Getter
-    @Column(name = "total")
+    @Column(name = "total", precision = 10, scale = 2)
     private BigDecimal total;
+
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private StatusPedido status;
 
     @Getter
     @OneToMany(mappedBy = "pedido")

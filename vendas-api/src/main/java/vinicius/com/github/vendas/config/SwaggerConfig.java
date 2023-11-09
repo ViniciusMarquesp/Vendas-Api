@@ -23,7 +23,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .useDefaultResponseMessages(false)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("carreiras.com.github.vendas.controller"))
+                .apis(RequestHandlerSelectors.basePackage("ViniciusMarquesp.com.github.vendas.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
@@ -42,9 +42,9 @@ public class SwaggerConfig {
 
     private Contact contact() {
         return new Contact(
-                "Ewerton L Carreira",
-                "https://github.com/carreiras/",
-                "ewertoncarreira@gmail.com"
+                "Vinicius Marques Pacheco",
+                "https://github.com/ViniciusMarquesp/",
+                "viniciuscontatom@hotmail.com.com"
         );
     }
 

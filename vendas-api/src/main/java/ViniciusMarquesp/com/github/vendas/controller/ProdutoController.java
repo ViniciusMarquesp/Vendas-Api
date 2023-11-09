@@ -33,7 +33,7 @@ public class ProdutoController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Lista todos os peodutos cadastrados.")
+    @ApiOperation(value = "Lista todos os produtos cadastrados.")
     @ApiResponses({@ApiResponse(code = 200, message = "Lista de produtos cadastrados.")})
     public List<Produto> pesquisarTodos() {
         return produtoService.pesquisarTodos();

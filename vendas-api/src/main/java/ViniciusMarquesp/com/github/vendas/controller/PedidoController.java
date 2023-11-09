@@ -48,8 +48,11 @@ public class PedidoController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Mostra o pedido.")
-    @ApiResponses({@ApiResponse(code = 200, message = "Mostra o pedido cadastrado.")})
+    @ApiOperation(value = "Obter detalhes de um pedido.")
+    @ApiResponses({
+            @ApiResponse(code = 201, message = "Pedido encontrado."),
+            @ApiResponse(code = 400, message = "Pedido não encontrado para o Id informado", response = ApiErros.class)
+    })
     public InformacaoPedidoDto pedidoCompleto(@PathVariable Long id) {
         return pedidoService.pedidoCompleto(id)
                 .map(pedido -> builderInformacaoPedidoDTO(pedido))
@@ -58,9 +61,9 @@ public class PedidoController {
 
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Atualiza status do pedido.")
+    @ApiOperation(value = "Altera o status do pedido.")
     @ApiResponses({
-            @ApiResponse(code = 200, message = "Status atualizado com sucesso."),
+            @ApiResponse(code = 200, message = "Status Alterado com sucesso."),
             @ApiResponse(code = 400, message = "Erro(s) de validação.", response = ApiErros.class),
             @ApiResponse(code = 404, message = "Pedido não encontrado.", response = ApiErros.class)
     })

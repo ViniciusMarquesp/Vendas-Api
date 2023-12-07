@@ -34,6 +34,7 @@ public class UsuarioController {
         return usuarioService.save(usuario);
     }
 
+    @PostMapping("/auth")
     public TokenDto authenticate(@RequestBody CredentialDto credentialDto) {
         try {
             Usuario usuario = Usuario.builder()
